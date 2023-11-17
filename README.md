@@ -8,3 +8,6 @@
 
 # JSON Server
 * json-server --watch db.json
+
+# Node Server
+* node server.js
