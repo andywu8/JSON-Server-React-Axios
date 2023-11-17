@@ -6,14 +6,16 @@ export default function PersonRemove(){
     const [id, setId] = useState([]);
     function handleSubmit(e){
         e.preventDefault();
-        axios.delete(`http://localhost:3000/users/${id}`)
-        // API.delete(`users/${id}`)
+        // axios.delete(`http://localhost:3000/users/${id}`)
+        API.delete(`users/${id}`)
         .then(res => {
             console.log(res);
             console.log(res.data);
         })
+        resetValues();
+    }
+    function resetValues(){
         setId("");
-        
     }
     return (
         <>

@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-
+import API from '../api';
 
 export default function PersonAdd(){
     const [name, setName] = useState([]);
@@ -10,15 +10,23 @@ export default function PersonAdd(){
         e.preventDefault();
         console.log("handleSubmit");
         console.log(name);
-        axios.post(`http://localhost:3000/users`, 
+        API.post(`users`, 
         {
             name: name,
             email: ""
         })
+        // axios.post(`http://localhost:3000/users`, 
+        // {
+        //     name: name,
+        //     email: ""
+        // })
         .then(res => {
           console.log(res);
           console.log(res.data);
         })
+        resetValues();
+    }
+    function resetValues(){
         setName("");
     }
     
