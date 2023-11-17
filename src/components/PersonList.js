@@ -15,14 +15,17 @@ export default function PersonList(){
     // }, [])
     useEffect(() => {
         const fetchData = async () => {
-          const response = await fetch('http://localhost:3000/users');
+          const response = await fetch('http://localhost:8080/api/persons');
           const json = await response.json();
           setPersons(json);
         };
         fetchData();
+        // const intervalId = setInterval(() => {
+        //     fetchData(); // Fetch data every 2 minutes
+        //   }, 100);
         const intervalId = setInterval(() => {
             fetchData(); // Fetch data every 2 minutes
-          }, 100);
+          }, 100000);
           return () => clearInterval(intervalId);
     }, []);
     
