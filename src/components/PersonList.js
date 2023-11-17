@@ -4,14 +4,26 @@ import { useEffect, useState }  from 'react';
 
 export default function PersonList(){
     const [persons, setPersons] = useState([]);
+    // useEffect(() => {
+    //     axios.get(`http://localhost:3000/users`)
+    //     .then(res => {
+    //         const persons = res.data;
+    //         console.log("persons", persons);
+    //         setPersons(persons);
+    //     })
+    // }, [])
     useEffect(() => {
-        axios.get(`https://jsonplaceholder.typicode.com/users`)
-        .then(res => {
-            const persons = res.data;
-            console.log("persons", persons);
-            setPersons(persons);
-        })
-    }, [])
+        const fetchData = async () => {
+          const response = await fetch('http://localhost:3000/users');
+          const json = await response.json();
+          setPersons(json);
+        };
+        fetchData();
+        const intervalId = setInterval(() => {
+            fetchData(); // Fetch data every 2 minutes
+          }, 100);
+          return () => clearInterval(intervalId);
+    }, []);
     
     return (
         <>
@@ -20,7 +32,9 @@ export default function PersonList(){
             {
                 persons.map(person =>
                     <li key={person.id}>
-                        {person.name}
+                        {person.id}-
+                        {person.name}-
+                        {person.email}
                     </li>
                 )
             }

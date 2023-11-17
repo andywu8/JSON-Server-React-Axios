@@ -1,9 +1,43 @@
 {
-    "posts": [
-      { "id": 1, "title": "json-server", "author": "typicode" }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
-  }
+  "users": [
+    {
+      "id": 1,
+      "name": "John",
+      "email": "fake email"
+    },
+    {
+      "andy": "",
+      "id": 2
+    },
+    {
+      "name": "andy",
+      "email": "",
+      "id": 5
+    },
+    {
+      "name": "andy",
+      "email": "",
+      "id": 6
+    },
+    {
+      "name": "andy",
+      "email": "",
+      "id": 7
+    },
+    {
+      "name": "andy",
+      "email": "",
+      "id": 8
+    },
+    {
+      "name": "andy",
+      "email": "",
+      "id": 9
+    },
+    {
+      "name": "name",
+      "email": "",
+      "id": 10
+    }
+  ]
+}

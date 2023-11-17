@@ -6,12 +6,14 @@ export default function PersonRemove(){
     const [id, setId] = useState([]);
     function handleSubmit(e){
         e.preventDefault();
-        // axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
-        API.delete(`users/${id}`)
+        axios.delete(`http://localhost:3000/users/${id}`)
+        // API.delete(`users/${id}`)
         .then(res => {
             console.log(res);
             console.log(res.data);
         })
+        setId("");
+        
     }
     return (
         <>
@@ -20,7 +22,7 @@ export default function PersonRemove(){
                 <form onSubmit={handleSubmit}>
                 <label>
                     Person ID:
-                    <input type="number" name="id" onChange={e=>setId(e.target.value)} />
+                    <input value={id} type="number" name="id" onChange={e=>setId(e.target.value)} />
                 </label>
                 <button type="submit">Delete</button>
                 </form>

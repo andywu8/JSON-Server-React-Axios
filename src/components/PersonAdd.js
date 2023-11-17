@@ -10,11 +10,16 @@ export default function PersonAdd(){
         e.preventDefault();
         console.log("handleSubmit");
         console.log(name);
-        axios.post(`https://jsonplaceholder.typicode.com/users`, name)
+        axios.post(`http://localhost:3000/users`, 
+        {
+            name: name,
+            email: ""
+        })
         .then(res => {
           console.log(res);
           console.log(res.data);
         })
+        setName("");
     }
     
     return (
@@ -23,7 +28,7 @@ export default function PersonAdd(){
             <form onSubmit={handleSubmit}>
                 <label>
                     Person Name:
-                    <input type="text" name="name" onChange={e => setName(e.target.value)} />
+                    <input value={name} type="text" name="name" onChange={e => setName(e.target.value)} />
                 </label>
                 <button type="submit">Add</button>
             </form>
